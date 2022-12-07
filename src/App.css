@@ -1,0 +1,34 @@
+.App {
+  margin: 0 auto;
+}
+.navCss {
+  box-sizing: border-box;
+  padding: 10% 10% 10% 10%;
+}
+
+.navCss .navContainer .me-auto {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main-img {
+  height: 500px;
+  background-image: url(https://codingapple1.github.io/shop/shoes1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sub-img {
+}
+.sub-img > img {
+  width: 100%;
+}
+
+.link {
+  display: block;
+  color: white;
+  width: 100px;
+  text-decoration: none;
+  text-align: center;
+}
