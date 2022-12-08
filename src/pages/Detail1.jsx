@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { Nav } from "react-bootstrap";
-import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // 라이프 사이클이란? 페이지에 장착되기도 하는 것(mount)
 //가끔 업데이트도 되는 것 (update)
@@ -15,24 +13,13 @@ import styled from "styled-components";
 //   componentWillUnmount() {} -> 옛날 컴포넌트 만드는 방법
 // }
 
-function Detail(props) {
+function Detail1(props) {
   console.log("안녕");
-  let { id } = useParams();
-  let [num, setNum] = useState("");
+
   let [tap, tpaChange] = useState(0);
-  let 찾은상품 = props.shoes.find((product) => {
-    return product.id == id;
-  });
-
   let navigate = useNavigate();
-
-  useEffect(() => {
-    //mount 및 update 할 때 실행됨.
-    if (isNaN(num) === true) {
-      alert("그러지마세요");
-    }
-    // clean up function
-  }, [num]); // [usestate 이름]-> 의존성 배열: usestate가 변경될 때마다 상태를 업데이트 해준다.
+  // clean up function
+  // [usestate 이름]-> 의존성 배열: usestate가 변경될 때마다 상태를 업데이트 해준다.
 
   return (
     <div className="container">
@@ -40,27 +27,12 @@ function Detail(props) {
         <div className="row-md-6">
           <img
             src="https://codingapple1.github.io/shop/shoes1.jpg"
-            width="100"
+            width="80%"
           />
+          <h4>{props.shoes[0].title}</h4>
+          <p>{props.shoes[0].price}</p>
+          <button className="btn bt   n-danger">주문하기</button>
         </div>
-        <div className="row-md-6">
-          <input
-            onChange={(event) => {
-              setNum(event.target.value);
-            }}
-          />
-          <h4 className="pt-5">{찾은상품.title}</h4>
-          <p>{찾은상품.content}</p>
-          <p>{찾은상품.price}원</p>
-          <button className="btn btn-danger">주문하기</button>
-        </div>
-        <p
-          onClick={() => {
-            navigate(`/detail1`);
-          }}
-        >
-          상세페이지1
-        </p>
         <p
           onClick={() => {
             navigate(`/detail1/1`);
@@ -70,7 +42,7 @@ function Detail(props) {
         </p>
         <p
           onClick={() => {
-            navigate(`/detail1/2`);
+            navigate(`/detail1/1`);
           }}
         >
           상세페이지3
@@ -113,6 +85,18 @@ function Detail(props) {
   );
 }
 
+// function Taps(props) {
+//   if (props.tap == 0) {
+//     return <div>내용0</div>;
+//   }
+//   if (props.tap == 1) {
+//     return <div>내용1</div>;
+//   }
+//   if (props.tap == 2) {
+//     return <div>내용2</div>;
+//   }
+// } 기본적으로는 이렇게 작성하기
+
 function Taps({ tap }) {
   let [fade, setFade] = useState("");
   useEffect(() => {
@@ -134,4 +118,4 @@ function Taps({ tap }) {
 //   추가로 커스텀 할 수 있음.
 // `
 
-export default Detail;
+export default Detail1;
